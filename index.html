@@ -1,133 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prateek Kumar Singh - Procurement Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Neutral light gray background */
-            color: #1e293b; /* Darker text for contrast */
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-color: #f8fafc; /* Light Gray Background */
+            color: #1e293b; /* Slate 800 */
         }
-        .fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
-            opacity: 0;
-        }
-        .fade-in-delay-1 { animation-delay: 0.2s; }
-        .fade-in-delay-2 { animation-delay: 0.4s; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
         .scroll-reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* Typing animation */
-        .typed-cursor {
-            opacity: 1;
-            animation: blink 0.7s infinite;
+        .section-title {
+            color: #0f172a; /* Slate 900 */
         }
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
+        .section-subtitle {
+            color: #475569; /* Slate 600 */
         }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 20px;
-            bottom: 20px;
-            width: 3px;
-            background-color: #99f6e4; /* Emerald accent */
-            border-radius: 2px;
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
         }
-
-        /* Card Flip */
-        .flip-card { perspective: 1000px; cursor: pointer; }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
+        .accordion-button .accordion-icon {
+            transition: transform 0.3s ease;
         }
-        .flip-card.is-flipped .flip-card-inner { 
-            transform: rotateY(180deg); 
-        }
-        @media (hover: hover) {
-            .flip-card:hover .flip-card-inner {
-                transform: rotateY(180deg);
-            }
-             .flip-card.is-flipped:hover .flip-card-inner {
-                transform: rotateY(180deg);
-            }
-        }
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            border-radius: 0.75rem;
-        }
-        .flip-card-back { 
-            transform: rotateY(180deg); 
-            text-align: center;
-        }
-
-
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 1.1rem;
-                transform: translateX(0);
-            }
-            .timeline-item {
-                width: 100%;
-                padding-left: 3rem;
-                padding-right: 0;
-            }
-             .timeline-content {
-                width: 100% !important;
-             }
-            .timeline-item:nth-child(even) .timeline-content {
-                float: none;
-                text-align: left;
-            }
-            .timeline-item:nth-child(odd) .timeline-content {
-                 float: none;
-                 text-align: left;
-            }
-            .timeline-dot {
-                left: 1.1rem;
-            }
+        .accordion-item.active .accordion-button .accordion-icon {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -137,329 +50,242 @@
     <header id="header" class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-xl font-bold text-slate-800">
-                    <a href="#">PKS</a>
-                </div>
+                <a href="#" class="text-xl font-bold text-slate-800">
+                    Prateek <span class="text-blue-600">Kumar Singh</span>
+                </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-slate-600 hover:text-emerald-600 transition-colors font-medium">About</a>
-                    <a href="#experience" class="text-slate-600 hover:text-emerald-600 transition-colors font-medium">Experience</a>
-                    <a href="#projects" class="text-slate-600 hover:text-emerald-600 transition-colors font-medium">Projects</a>
-                    <a href="#skills" class="text-slate-600 hover:text-emerald-600 transition-colors font-medium">Skills</a>
-                    <a href="#contact" class="text-slate-600 hover:text-emerald-600 transition-colors font-medium">Contact</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">About</a>
+                    <a href="#case-studies" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Case Studies</a>
+                    <a href="#skills" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Skills</a>
+                    <a href="#contact" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Contact</a>
                 </nav>
-                 <a href="mailto:Prateek.kumar1095@gmail.com" class="hidden md:block bg-emerald-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-emerald-700 transition-transform transform hover:scale-105 shadow-lg">
-                    Contact Me
+                <a href="#contact" class="hidden md:block bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                    Get In Touch
                 </a>
                 <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                 <a href="#about" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100 rounded-md">About</a>
-                 <a href="#experience" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100 rounded-md">Experience</a>
-                 <a href="#projects" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100 rounded-md">Projects</a>
-                 <a href="#skills" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100 rounded-md">Skills</a>
-                 <a href="#contact" class="block py-2 px-4 text-sm text-slate-600 hover:bg-slate-100 rounded-md">Contact</a>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                 <a href="#about" class="block py-2 px-4 text-slate-600 hover:bg-slate-100 rounded-md">About</a>
+                 <a href="#case-studies" class="block py-2 px-4 text-slate-600 hover:bg-slate-100 rounded-md">Case Studies</a>
+                 <a href="#skills" class="block py-2 px-4 text-slate-600 hover:bg-slate-100 rounded-md">Skills</a>
+                 <a href="#contact" class="block py-2 px-4 text-slate-600 hover:bg-slate-100 rounded-md">Contact</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center bg-white pt-20 relative">
-            <div class="container mx-auto px-6 py-16 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-800 leading-tight mb-4 fade-in">
-                    Hi, I'm Prateek Kumar Singh
-                </h1>
-                <div class="text-lg md:text-2xl text-slate-600 max-w-3xl mx-auto mb-8 h-16 md:h-8 fade-in fade-in-delay-1">
-                    A Procurement Professional specializing in <br class="md:hidden"/> <span id="typed" class="text-emerald-600 font-bold"></span><span class="typed-cursor">|</span>
-                </div>
-                <div class="flex flex-wrap justify-center items-center gap-4 fade-in fade-in-delay-2">
-                    <a href="mailto:Prateek.kumar1095@gmail.com" class="bg-emerald-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-emerald-700 transition-transform transform hover:scale-105 shadow-lg">
-                        Get in Touch
-                    </a>
-                    <a href="https://linkedin.com/in/prateekkumarsingh10" target="_blank" class="bg-white text-emerald-600 font-semibold px-8 py-3 rounded-lg border-2 border-emerald-600 hover:bg-emerald-50 transition-transform transform hover:scale-105">
-                        <i class="fab fa-linkedin mr-2"></i> LinkedIn
-                    </a>
-                </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-                <a href="#about" class="text-slate-500 animate-bounce block w-10 h-10">
-                    <i class="fas fa-arrow-down text-2xl"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-3 scroll-reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-6">About Me</h2>
-                        <p class="text-lg text-slate-600 leading-relaxed">
-                            I am a seasoned procurement professional with a proven track record of over 6 years in sourcing, supplier management, and contract administration across the energy, technology, and manufacturing sectors.
-                        </p>
-                        <p class="text-lg text-slate-600 leading-relaxed mt-4">
-                            My expertise lies in managing end-to-end procurement processes, leveraging systems like SAP and Oracle to drive efficiency and deliver substantial cost savings. I thrive on collaborating with cross-functional teams to ensure a cost-effective and timely supply chain. My recent MBA from Loughborough University has further honed my strategic and operational management skills.
-                        </p>
+        <!-- Homepage (Hero Section) -->
+        <section id="home" class="min-h-screen flex flex-col justify-center bg-white pt-24 pb-12 relative">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl font-extrabold section-title leading-tight mb-2 scroll-reveal">
+                       Strategic Procurement Professional
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-600 mb-4 scroll-reveal" style="transition-delay: 0.1s;">
+                       Delivering Cost Savings & Process Excellence
+                    </h2>
+                    <p class="text-lg md:text-xl section-subtitle max-w-3xl mx-auto mb-8 scroll-reveal" style="transition-delay: 0.2s;">
+                        Combining 6 years of procurement experience with an MBA to streamline sourcing, strengthen supplier networks, and enhance cost efficiency.
+                    </p>
+                    <div class="flex flex-wrap justify-center items-center gap-4 scroll-reveal" style="transition-delay: 0.4s;">
+                        <a href="#case-studies" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="bg-white text-blue-600 font-semibold px-8 py-3 rounded-lg border-2 border-blue-600 hover:bg-blue-50 transition-transform transform hover:scale-105">
+                            Get In Touch
+                        </a>
                     </div>
-                     <div class="md:col-span-2 space-y-6 scroll-reveal">
-                         <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl flex items-center gap-5 transform hover:scale-105 hover:shadow-lg transition-all duration-300">
-                            <div class="text-3xl text-emerald-600 bg-emerald-100 p-3 rounded-full"><i class="fas fa-chart-line"></i></div>
-                            <div>
-                                <div class="text-3xl font-bold text-emerald-600">£1.1M+</div>
-                                <div class="text-slate-500 mt-1 font-medium">in Cost Savings</div>
-                            </div>
+                </div>
+                 <!-- Highlights -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left max-w-6xl mx-auto mt-20">
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 flex items-center gap-4 scroll-reveal" style="transition-delay: 0.6s;">
+                        <i class="fas fa-chart-line text-3xl text-blue-600"></i>
+                        <div>
+                            <p class="text-2xl font-bold text-blue-600">£1.1M+</p>
+                            <p class="text-slate-600 text-sm">Cost Savings Achieved</p>
                         </div>
-                         <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl flex items-center gap-5 transform hover:scale-105 hover:shadow-lg transition-all duration-300">
-                            <div class="text-3xl text-emerald-600 bg-emerald-100 p-3 rounded-full"><i class="fas fa-handshake"></i></div>
-                            <div>
-                                <div class="text-3xl font-bold text-emerald-600">50+</div>
-                                <div class="text-slate-500 mt-1 font-medium">Supplier Relationships</div>
-                            </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 flex items-center gap-4 scroll-reveal" style="transition-delay: 0.7s;">
+                         <i class="fas fa-file-signature text-3xl text-blue-600"></i>
+                        <div>
+                            <p class="text-2xl font-bold text-blue-600">70%</p>
+                            <p class="text-slate-600 text-sm">Faster Contract Turnaround</p>
                         </div>
-                        <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl flex items-center gap-5 transform hover:scale-105 hover:shadow-lg transition-all duration-300">
-                            <div class="text-3xl text-emerald-600 bg-emerald-100 p-3 rounded-full"><i class="fas fa-truck-fast"></i></div>
-                            <div>
-                                <div class="text-3xl font-bold text-emerald-600">98%</div>
-                                <div class="text-slate-500 mt-1 font-medium">Supplier Delivery</div>
-                            </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 flex items-center gap-4 scroll-reveal" style="transition-delay: 0.8s;">
+                         <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
+                        <div>
+                            <p class="text-2xl font-bold text-blue-600">60%</p>
+                            <p class="text-slate-600 text-sm">Supply Chain Risk Reduction</p>
                         </div>
-                     </div>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 flex items-center gap-4 scroll-reveal" style="transition-delay: 0.9s;">
+                         <i class="fas fa-truck-fast text-3xl text-blue-600"></i>
+                        <div>
+                            <p class="text-2xl font-bold text-blue-600">98%</p>
+                            <p class="text-slate-600 text-sm">On-Time Delivery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- Scroll Down Arrow -->
+            <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 animate-bounce" aria-label="Scroll to next section">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-20 md:py-28 bg-slate-50">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title">About Me</h2>
+                    <p class="mt-2 text-lg section-subtitle">From Engineering Foundations to Procurement Strategy</p>
+                </div>
+                <div class="mt-12 text-lg text-slate-700 leading-relaxed space-y-6">
+                    <p class="scroll-reveal">My journey began in mechanical engineering, which helped me understand how materials, processes, and cost efficiency fit together. Over time, I moved into procurement, where I could directly influence how businesses manage suppliers, spending, and operational flow.</p>
+                    <p class="scroll-reveal">Over the past six years, I’ve managed end-to-end procurement for both manufacturing and IT service companies. My work has included sourcing strategy, supplier evaluation, and contract negotiation, all focused on improving cost efficiency, compliance, and supplier performance.</p>
+                    <p class="scroll-reveal">Recently, I completed my MBA at Loughborough University, where I explored how AI-driven contract management systems can transform procurement operations. Today, I focus on building procurement processes that are simple, transparent, and scalable, aligning business goals with measurable outcomes.</p>
                 </div>
             </div>
         </section>
-        
-        <!-- Award Section -->
-        <section class="py-24 bg-slate-800 text-white">
-            <div class="container mx-auto px-6 text-center scroll-reveal">
-                <div class="flex justify-center space-x-2 mb-4">
-                    <i class="fas fa-star text-5xl text-yellow-300"></i>
-                    <i class="fas fa-star text-5xl text-yellow-300"></i>
-                    <i class="fas fa-star text-5xl text-yellow-300"></i>
-                    <i class="fas fa-star text-5xl text-yellow-300"></i>
-                    <i class="fas fa-star text-5xl text-yellow-300"></i>
-                </div>
-                <h3 class="text-3xl md:text-4xl font-bold">Star Performer of the Year</h3>
-                <p class="mt-3 text-slate-300 max-w-2xl mx-auto text-lg">Recognized at Vivo Mobile India for procurement transformation and significant cost optimisation achievements.</p>
-            </div>
-        </section>
 
-
-        <!-- Experience Section -->
-        <section id="experience" class="py-20 md:py-28 bg-slate-50">
+        <!-- Case Studies -->
+        <section id="case-studies" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Professional Experience</h2>
-                    <p class="text-slate-500 mt-2">My career journey and key accomplishments.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold section-title">Case Studies</h2>
+                    <p class="mt-2 text-lg section-subtitle">Real projects that demonstrate how I approach challenges and deliver results.</p>
                 </div>
-                <div class="relative max-w-5xl mx-auto timeline">
-                    <!-- Tata Consultancy Services -->
-                    <div class="timeline-item mb-12 flex justify-between items-start w-full">
-                        <div class="order-1 md:w-5/12"></div>
-                        <div class="z-20 flex items-center order-1 bg-slate-50">
-                             <div class="timeline-dot w-6 h-6 bg-emerald-600 rounded-full border-4 border-slate-50"></div>
-                        </div>
-                        <div class="order-1 bg-white rounded-xl shadow-md w-full md:w-5/12 px-6 py-4 scroll-reveal transform hover:scale-105 transition-transform duration-300">
-                             <span class="text-sm font-semibold text-slate-500">Mar 2024 - Oct 2024</span>
-                             <h3 class="text-xl font-bold mt-1 text-slate-800">Procurement Lead</h3>
-                             <p class="text-emerald-600 font-medium mb-3">Tata Consultancy Services</p>
-                             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
-                                <li>Led PR-to-PO workflow transition for clients across SE Asia and Oceania.</li>
-                                <li>Oversaw a procurement budget of £5M, ensuring efficiency.</li>
-                                <li>Migrated 100% of active workflows to TCS systems within 20 weeks.</li>
-                                <li>Mentored and trained 4 procurement professionals.</li>
-                             </ul>
-                        </div>
-                    </div>
-
-                    <!-- Aarvi Encon -->
-                    <div class="timeline-item mb-12 flex md:flex-row-reverse justify-between items-start w-full">
-                        <div class="order-1 md:w-5/12"></div>
-                        <div class="z-20 flex items-center order-1 bg-slate-50">
-                             <div class="timeline-dot w-6 h-6 bg-emerald-600 rounded-full border-4 border-slate-50"></div>
-                        </div>
-                        <div class="order-1 bg-white rounded-xl shadow-md w-full md:w-5/12 px-6 py-4 scroll-reveal transform hover:scale-105 transition-transform duration-300">
-                             <span class="text-sm font-semibold text-slate-500">Nov 2023 - Jan 2024</span>
-                             <h3 class="text-xl font-bold mt-1 text-slate-800">Procurement Engineer</h3>
-                             <p class="text-emerald-600 font-medium mb-3">Aarvi Encon (Contract)</p>
-                             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
-                                <li>Handled procurement for engineering teams in SAP.</li>
-                                <li>Achieved 98% SLA adherence through improved coordination.</li>
-                                <li>Executed 20+ purchase orders daily with 100% compliance.</li>
-                             </ul>
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item bg-slate-50 rounded-xl border border-slate-200 scroll-reveal">
+                        <button class="accordion-button w-full text-left p-6 flex justify-between items-center">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-blue-600">Digital Contract Transformation</h3>
+                                <p class="text-slate-500 font-medium mt-1">Role: Purchase Engineer | Vivo Mobile India</p>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-icon text-slate-500"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-6 pt-0">
+                                <div class="space-y-4 text-slate-700">
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-exclamation-circle text-yellow-500 w-6 mr-3 mt-1"></i><span>Challenge:</span></strong><span class="ml-2">The company relied on manual paperwork and physical approvals for supplier contracts, leading to delays and version control issues. Each renewal could take up to six weeks, and missing signatures sometimes caused project holdups.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-cogs text-blue-500 w-6 mr-3 mt-1"></i><span>Action:</span></strong><span class="ml-2">I identified this bottleneck and proposed digitising the contract approval process. I coordinated with internal IT teams to integrate an e-signature workflow and collaborated with suppliers to ensure legal and operational compliance. I started the rollout with a few suppliers who already had digital infrastructure, then expanded adoption across all major vendors.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-check-circle text-green-500 w-6 mr-3 mt-1"></i><span>Result:</span></strong><span class="ml-2">Contract approval time reduced by 70% (from 6 weeks to less than 2). Administrative errors dropped significantly due to version tracking. Improved cross-department collaboration, as approvals became traceable and secure.</span></div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-slate-200">
+                                    <h4 class="font-semibold text-slate-700 mb-2">Skills Used:</h4>
+                                    <div class="flex flex-wrap gap-2 text-sm">
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Digital Procurement</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Change Management</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Supplier Engagement</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Vivo Mobile India -->
-                     <div class="timeline-item mb-12 flex justify-between items-start w-full">
-                        <div class="order-1 md:w-5/12"></div>
-                        <div class="z-20 flex items-center order-1 bg-slate-50">
-                             <div class="timeline-dot w-6 h-6 bg-emerald-600 rounded-full border-4 border-slate-50"></div>
+                     <!-- Accordion Item 2 -->
+                    <div class="accordion-item bg-slate-50 rounded-xl border border-slate-200 scroll-reveal">
+                        <button class="accordion-button w-full text-left p-6 flex justify-between items-center">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-blue-600">Supplier Diversification & Risk Mitigation</h3>
+                                <p class="text-slate-500 font-medium mt-1">Role: Purchase Engineer | Vivo Mobile India</p>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-icon text-slate-500"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-6 pt-0">
+                                <div class="space-y-4 text-slate-700">
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-exclamation-circle text-yellow-500 w-6 mr-3 mt-1"></i><span>Challenge:</span></strong><span class="ml-2">Vivo faced significant supply disruptions during COVID-19 due to dependence on a single overseas supplier for key raw materials. This caused stock shortages, increased freight costs, and production risks.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-cogs text-blue-500 w-6 mr-3 mt-1"></i><span>Action:</span></strong><span class="ml-2">I initiated a supplier diversification project focused on localisation. I conducted market benchmarking, identified potential local suppliers, and coordinated with R&D to test alternative materials. To overcome resistance from production teams, I arranged pilot trials to ensure quality and performance standards were maintained.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-check-circle text-green-500 w-6 mr-3 mt-1"></i><span>Result:</span></strong><span class="ml-2">Reduced supply dependency by 60% through onboarding new domestic suppliers. Cut lead times by 30% and reduced logistics costs by 15%. Strengthened ESG performance by prioritising local sourcing.</span></div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-slate-200">
+                                    <h4 class="font-semibold text-slate-700 mb-2">Skills Used:</h4>
+                                    <div class="flex flex-wrap gap-2 text-sm">
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Strategic Sourcing</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Risk Management</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Negotiation</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="order-1 bg-white rounded-xl shadow-md w-full md:w-5/12 px-6 py-4 scroll-reveal transform hover:scale-105 transition-transform duration-300">
-                             <span class="text-sm font-semibold text-slate-500">Jun 2018 - Sep 2023</span>
-                             <h3 class="text-xl font-bold mt-1 text-slate-800">Purchase Engineer</h3>
-                             <p class="text-emerald-600 font-medium mb-3">Vivo Mobile India</p>
-                             <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
-                                <li>Achieved cost savings of £1.1M+ through strategic initiatives.</li>
-                                <li>Reduced supply chain risk by 60% during the COVID-19 pandemic.</li>
-                                <li>Improved supplier delivery performance from 85% to 98%.</li>
-                                <li>Reduced stockouts by 73% and project delays by 30%.</li>
-                                <li>Promoted from Assistant Engineer to Engineer within 2 years.</li>
-                             </ul>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item bg-slate-50 rounded-xl border border-slate-200 scroll-reveal">
+                        <button class="accordion-button w-full text-left p-6 flex justify-between items-center">
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-blue-600">Procurement Workflow Optimisation</h3>
+                                <p class="text-slate-500 font-medium mt-1">Role: Procurement Lead | Tata Consultancy Services</p>
+                            </div>
+                            <i class="fas fa-chevron-down accordion-icon text-slate-500"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-6 pt-0">
+                               <div class="space-y-4 text-slate-700">
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-exclamation-circle text-yellow-500 w-6 mr-3 mt-1"></i><span>Challenge:</span></strong><span class="ml-2">Procure-to-Pay (P2P) processes varied across Southeast Asia and Oceania, leading to inefficiencies and inconsistent reporting. Manual tracking of requests delayed approvals and made performance analysis difficult.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-cogs text-blue-500 w-6 mr-3 mt-1"></i><span>Action:</span></strong><span class="ml-2">I led the standardisation of procurement workflows by mapping regional variations and designing a unified process within SAP. Additionally, I trained a 4-member procurement team on the new system to ensure a smooth transition.</span></div>
+                                    <div><strong class="flex items-start text-slate-800"><i class="fas fa-check-circle text-green-500 w-6 mr-3 mt-1"></i><span>Result:</span></strong><span class="ml-2">Achieved 100% migration of active workflows in 20 weeks without business disruption. Improved data visibility and reporting accuracy by 40%. Increased stakeholder satisfaction by reducing approval bottlenecks.</span></div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-slate-200">
+                                    <h4 class="font-semibold text-slate-700 mb-2">Skills Used:</h4>
+                                    <div class="flex flex-wrap gap-2 text-sm">
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">SAP</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Process Standardisation</span>
+                                        <span class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Team Leadership</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Academic Projects</h2>
-                    <p class="text-slate-500 mt-2">A highlight from my MBA research at Loughborough University.</p>
-                </div>
-                <div class="max-w-3xl mx-auto bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-lg scroll-reveal">
-                    <div class="flex items-start gap-6">
-                        <div class="text-3xl text-emerald-600 mt-1"><i class="fas fa-book-open"></i></div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-800">MBA Dissertation</h3>
-                            <p class="text-emerald-600 font-medium mb-3">AI-Driven vs. Traditional Contract Management Systems</p>
-                            <p class="text-slate-600">My research demonstrated that AI integration significantly reduces contract administration time and costs while enhancing compliance and mitigating risks. The study provided a framework for businesses to evaluate and adopt AI solutions in their procurement lifecycle.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-
-        <!-- Skills Section -->
+        <!-- Core Skills -->
         <section id="skills" class="py-20 md:py-28 bg-slate-50">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Core Competencies</h2>
-                    <p class="text-slate-500 mt-2">My professional capabilities and technical proficiencies.</p>
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title">Core Skills</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Procurement and Sourcing -->
-                    <div class="flip-card h-64 scroll-reveal">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front bg-white border border-slate-200 shadow-md relative">
-                                <div class="absolute top-4 right-4 text-slate-400">
-                                    <i class="fas fa-sync-alt"></i>
-                                </div>
-                                <div class="text-4xl text-emerald-600 mb-4"><i class="fas fa-search-dollar"></i></div>
-                                <h3 class="text-2xl font-bold text-slate-800">Procurement & Sourcing</h3>
-                            </div>
-                            <div class="flip-card-back bg-emerald-600 text-white shadow-lg">
-                                <p>Strategic Sourcing, Category Management, Tender Management (RFI, RFQ, RFP).</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Supplier Management -->
-                     <div class="flip-card h-64 scroll-reveal">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front bg-white border border-slate-200 shadow-md relative">
-                                 <div class="absolute top-4 right-4 text-slate-400">
-                                    <i class="fas fa-sync-alt"></i>
-                                </div>
-                                <div class="text-4xl text-emerald-600 mb-4"><i class="fas fa-users-cog"></i></div>
-                                <h3 class="text-2xl font-bold text-slate-800">Supplier Management</h3>
-                            </div>
-                            <div class="flip-card-back bg-emerald-600 text-white shadow-lg">
-                                <p>Relationship Building, Performance Evaluation, International Diversification.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Contract Management -->
-                     <div class="flip-card h-64 scroll-reveal">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front bg-white border border-slate-200 shadow-md relative">
-                                <div class="absolute top-4 right-4 text-slate-400">
-                                    <i class="fas fa-sync-alt"></i>
-                                </div>
-                                <div class="text-4xl text-emerald-600 mb-4"><i class="fas fa-file-signature"></i></div>
-                                <h3 class="text-2xl font-bold text-slate-800">Contract Management</h3>
-                            </div>
-                            <div class="flip-card-back bg-emerald-600 text-white shadow-lg">
-                                <p>Negotiation, Service-Level Agreements (SLAs), Digital Contract Systems.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-16 text-center scroll-reveal">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-6">Technical Skills</h3>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">SAP MM/SRM</span>
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">Oracle ERP</span>
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">Power BI</span>
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">Advanced Excel</span>
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">PowerPoint</span>
-                        <span class="bg-white text-slate-700 text-base font-medium px-5 py-2 rounded-lg border border-slate-200 shadow-sm">AI in Procurement</span>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Procurement & Sourcing</h3><p class="text-slate-600">End-to-end execution across direct, indirect, and service categories, from supplier identification to contracting.</p></div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Supplier Management</h3><p class="text-slate-600">Performance tracking, supplier scorecards, and on-time delivery management through proactive communication.</p></div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Contracts & Compliance</h3><p class="text-slate-600">Drafting and negotiating contracts, implementing e-signature systems, and ensuring regulatory compliance.</p></div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Systems & Tools</h3><p class="text-slate-600">SAP, Oracle ERP, Advanced Excel, PowerPoint</p></div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Reporting & Analytics</h3><p class="text-slate-600">Spend analysis, KPI dashboards, cost tracking, and performance evaluation metrics.</p></div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 scroll-reveal"><h3 class="font-bold text-lg text-slate-800 mb-2">Collaboration</h3><p class="text-slate-600">Cross-functional coordination with engineering, operations, and finance teams for aligned decision-making.</p></div>
                 </div>
             </div>
         </section>
 
-         <!-- Education Section -->
-        <section id="education" class="py-20 md:py-28 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Education & Certifications</h2>
-                    <p class="text-slate-500 mt-2">My academic qualifications and ongoing professional development.</p>
-                </div>
-                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-slate-50 p-8 rounded-xl shadow-md scroll-reveal border-t-4 border-emerald-500">
-                        <div class="text-3xl text-emerald-600 mb-4"><i class="fas fa-graduation-cap"></i></div>
-                        <h3 class="text-xl font-bold text-slate-800">Master of Business Administration (MBA)</h3>
-                        <p class="text-slate-600 font-medium">Loughborough University, UK (2024-2025)</p>
-                    </div>
-                     <div class="bg-slate-50 p-8 rounded-xl shadow-md scroll-reveal border-t-4 border-emerald-500">
-                        <div class="text-3xl text-emerald-600 mb-4"><i class="fas fa-user-graduate"></i></div>
-                        <h3 class="text-xl font-bold text-slate-800">Bachelor of Technology, Mech. Eng.</h3>
-                        <p class="text-slate-600 font-medium">Abdul Kalam Technical University, India (2014-2018)</p>
-                    </div>
-                     <div class="bg-slate-50 p-8 rounded-xl shadow-md scroll-reveal md:col-span-2 border-t-4 border-emerald-500">
-                        <div class="text-3xl text-emerald-600 mb-4"><i class="fas fa-certificate"></i></div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-3">Certifications</h3>
-                        <ul class="space-y-3 text-slate-600">
-                           <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>CIPS Level 4 Diploma in Procurement and Supply (Expected Mar 2026)</li>
-                           <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>CIPS Certificate in Ethical Procurement and Supply - Jan 2025</li>
-                           <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>Strategic Sourcing Certification (Coursera) - 2023</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 md:py-28 bg-slate-50">
-            <div class="container mx-auto px-6">
-                 <div class="max-w-2xl mx-auto scroll-reveal text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Get In Touch</h2>
-                    <p class="text-slate-500 mt-4">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out.</p>
-                    <div class="mt-8 bg-white rounded-xl shadow-lg p-6 border border-slate-200">
-                        <div class="flex items-center justify-center space-x-8 md:space-x-16">
-                            <a href="mailto:Prateek.kumar1095@gmail.com" class="text-slate-700 hover:text-emerald-600 transition-colors font-medium text-lg flex items-center flex-col md:flex-row gap-2">
-                                <i class="fas fa-envelope text-xl"></i><span>Email Me</span>
-                            </a>
-                            <a href="https://linkedin.com/in/prateekkumarsingh10" target="_blank" class="text-slate-700 hover:text-emerald-600 transition-colors font-medium text-lg flex items-center flex-col md:flex-row gap-2">
-                                <i class="fab fa-linkedin text-xl"></i><span>LinkedIn</span>
-                            </a>
-                        </div>
+        <!-- Contact -->
+        <section id="contact" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6 text-center max-w-3xl">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold section-title">Get In Touch</h2>
+                    <p class="mt-4 text-lg section-subtitle">I’m based in Nottingham, UK, and open to opportunities in procurement, supply chain, or operations. Whether it’s a full-time role, project collaboration, or process improvement initiative, I’d love to connect.</p>
+                    <div class="mt-10 bg-slate-50 border border-slate-200 rounded-xl p-8 space-y-6">
+                        <a href="mailto:Prateek.kumar1095@gmail.com" class="flex items-center justify-center text-lg text-slate-700 hover:text-blue-600 transition-colors"><i class="fas fa-envelope w-8"></i><span>Prateek.kumar1095@gmail.com</span></a>
+                        <a href="tel:+447565668212" class="flex items-center justify-center text-lg text-slate-700 hover:text-blue-600 transition-colors"><i class="fas fa-phone w-8"></i><span>+44 7565 668 212</span></a>
+                        <a href="https://linkedin.com/in/prateekkumarsingh10" target="_blank" class="flex items-center justify-center text-lg text-slate-700 hover:text-blue-600 transition-colors"><i class="fab fa-linkedin w-8"></i><span>linkedin.com/in/prateekkumarsingh10</span></a>
+                        <p class="flex items-center justify-center text-lg text-slate-700"><i class="fas fa-map-marker-alt w-8"></i><span>Nottingham, United Kingdom</span></p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-slate-800 text-slate-400">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Prateek Kumar Singh. All Rights Reserved.</p>
+            <p>&copy; 2025 Prateek Kumar Singh</p>
+            <p class="text-sm mt-1">Built with clarity, data, and purpose.</p>
         </div>
     </footer>
 
@@ -470,16 +296,8 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const navLinks = document.querySelectorAll('#mobile-menu a, header nav a');
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Close menu on link click
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                     mobileMenu.classList.add('hidden');
-                });
-            });
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            navLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
             // Scroll Reveal Animation
             const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
@@ -493,77 +311,33 @@
             }, { threshold: 0.1 });
             scrollRevealElements.forEach(element => observer.observe(element));
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                     const target = document.querySelector(this.getAttribute('href'));
-                     if(target) {
-                        // Offset for fixed header
-                        const headerOffset = 80;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                     }
-                });
-            });
-            
             // Header shadow on scroll
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('shadow-md');
-                } else {
-                    header.classList.remove('shadow-md');
-                }
+                header.classList.toggle('shadow-md', window.scrollY > 50);
             });
+            
+            // Accordion functionality
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const accordionItem = button.parentElement;
+                    const accordionContent = button.nextElementSibling;
+                    
+                    // Close other open accordions
+                    document.querySelectorAll('.accordion-item.active').forEach(openItem => {
+                        if(openItem !== accordionItem) {
+                            openItem.classList.remove('active');
+                            openItem.querySelector('.accordion-content').style.maxHeight = null;
+                        }
+                    });
 
-            // Typing effect
-            const typedTextSpan = document.getElementById('typed');
-            const textArray = ["Strategic Sourcing", "Supplier Management", "Cost Optimization", "Contract Negotiation"];
-            const typingDelay = 100;
-            const erasingDelay = 50;
-            const newTextDelay = 2000;
-            let textArrayIndex = 0;
-            let charIndex = 0;
+                    accordionItem.classList.toggle('active');
 
-            function type() {
-                if (charIndex < textArray[textArrayIndex].length) {
-                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(type, typingDelay);
-                } else {
-                    setTimeout(erase, newTextDelay);
-                }
-            }
-
-            function erase() {
-                if (charIndex > 0) {
-                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                    charIndex--;
-                    setTimeout(erase, erasingDelay);
-                } else {
-                    textArrayIndex++;
-                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                    setTimeout(type, typingDelay + 1100);
-                }
-            }
-            if(textArray.length) setTimeout(type, newTextDelay + 250);
-
-            // Flip card on click/tap
-            document.querySelectorAll('.flip-card').forEach(card => {
-                // Flips the card on click
-                card.addEventListener('click', () => {
-                    card.classList.toggle('is-flipped');
-                });
-                // Resets the card's state when the mouse leaves, if it wasn't clicked
-                 card.addEventListener('mouseleave', () => {
-                    if (!card.classList.contains('is-flipped')) {
-                       card.querySelector('.flip-card-inner').style.transform = '';
+                    if (accordionItem.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = null;
                     }
                 });
             });
